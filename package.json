@@ -2,9 +2,9 @@
   "name": "devloja-api",
   "version": "1.0.0",
   "description": "DevLoja API.",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon"
   },
   "author": {
     "name": "Carlos",
@@ -13,5 +13,9 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7",
+    "sucrase": "^3.35.0"
   }
 }
