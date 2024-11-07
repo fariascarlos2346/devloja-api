@@ -12,9 +12,19 @@ class UserController {
             admin: Yup.boolean(),
         });
 
-        const validation = await schema.isValid(request.body);
+        try {
+            schema.validateSync(request.body, { abortEarly: false });
+        } catch (err) {
+            return response.status(400).json({ error: err.errors });
+        }
 
-        console.log(validation);
+        const isValid = await schema.isValid(request.body);
+
+        if (!isValid) {
+            return response
+            .status(400)
+            .json({ error: 'Make sure the data is correct. '});
+        }
 
         const { name, email, password_hash, admin } = request.body;
 
